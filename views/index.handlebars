@@ -1,0 +1,54 @@
+<div class="container">
+    {{!-- Jumbo --}}
+    <div class="jumbotron">
+    <div class="container">
+        <h1 class="display-4">Reading List</h1>
+        <p class="lead">Build a list of books you should be reading. Because you know you should.</p>
+    </div>
+    </div>
+
+    <div class="container">
+
+            <div class="row">
+                <div class="col" id="unreadCol">
+                    <h2> You're going to read...</h2>
+                    <hr>
+                    <ul>
+                        {{#each books}}
+                            {{#if devoured}}
+                                {{> listItem devoured=true}}
+                            {{/if}}
+                        {{/each}}
+                    </ul>
+                </div>
+
+            <div class="col" id="readCol"> 
+                <h2>You've read...</h2>
+                <hr> 
+                <ul>
+                     {{#each books}}
+                        {{#unless devoured}}
+                            {{> books/book-block devoured=false}}
+                        {{/unless}}
+                     {{/each}}
+                </ul>
+            </div>  
+
+        </div>
+
+    </div>
+
+    <hr> 
+
+    {{!-- Add book form --}}
+    <form>
+        <div class="form-group">
+            <label for="bookInput">Add a new book</label>
+            <input class="form-control" id="addBook" placeholder="Enter a book title">
+            <small id="formCaption" class="form-text text-muted">What better could you do?</small>
+            <br>
+            <button type="submit" class="btn btn-primary">Do it.</button>
+        </div>
+    </form>
+
+</div>

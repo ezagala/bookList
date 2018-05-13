@@ -1,18 +1,14 @@
-const Sequelize = require("sequelize");
-const sequelize = require("../config/connection.js");
-
-const Book = sequelize.define('book', {
-    title: {
-        type: sequelize.STRING
-    }, 
-    author: {
-        type: sequelize.STRING
-    },
-    devoured: {
-        type: sequelize.BOOLEAN
-    }
-})
-
-Book.sync(); 
-
-module.exports = Book; 
+module.exports = (sequelize, dataTypes) => {
+    const Book = sequelize.define('book', {
+        title: {
+            type: dataTypes.STRING
+        }, 
+        author: {
+            type: dataTypes.STRING
+        },
+        devoured: {
+            type: dataTypes.BOOLEAN
+        }
+    })
+    return Book; 
+}
