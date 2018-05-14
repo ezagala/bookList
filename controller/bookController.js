@@ -21,8 +21,8 @@ module.exports = (app) => {
     })
 
     // Route to add a title 
-    app.post("/api/books", (req, res) => {
-        const book = req.body
+    app.post("/api/books/", (req, res) => {
+        const book = req.body; 
         console.log("This is book " + book); 
         db.Book.create({
             title: book.title, 
@@ -32,11 +32,12 @@ module.exports = (app) => {
     })
 
     // Route to hit when title has been devoured
-    app.put("/api/books", (req, res) => {
+    app.put("/api/books/:id", (req, res) => {
         const book = req.body; 
+        const id = req.params.id
         db.Book.update(
             {devoured: book.devoured}, 
-            {where: {id: book.id}}
+            {where: {id: id}}
         ).then(result => res.json(result));; 
     })
 };
