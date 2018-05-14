@@ -1,51 +1,64 @@
 <div class="container">
     {{!-- Jumbo --}}
     <div class="jumbotron">
-    <div class="container">
-        <h1 class="display-4">Reading List</h1>
-        <p class="lead">Build a list of books you should be reading. Because you know you should.</p>
+        <div class="container">
+            <h1 class="display-4">Reading List</h1>
+            <p class="lead">Build a list of books you should be reading. Because you know you should.</p>
+        </div>
     </div>
-    </div>
 
     <div class="container">
-
-            <div class="row">
-                <div class="col" id="unreadCol">
-                    <h2> You're going to read...</h2>
-                    <hr>
-                    <ul>
-                        {{#each books}}
-                            {{#if devoured}}
-                                {{> listItem devoured=true}}
-                            {{/if}}
-                        {{/each}}
-                    </ul>
-                </div>
-
-            <div class="col" id="readCol"> 
-                <h2>You've read...</h2>
-                <hr> 
+        <div class="row">
+            <div class="col-6 " id="unreadCol">
+                <h2> You're going to read - </h2>
+                <hr>
                 <ul>
-                     {{#each books}}
-                        {{#unless devoured}}
-                            {{> books/book-block devoured=false}}
-                        {{/unless}}
-                     {{/each}}
+                    {{#each books}} 
+                        {{#unless devoured}} 
+                            {{> books/listItem}} 
+                        {{/unless}} 
+                    {{/each}}
                 </ul>
-            </div>  
+            </div>
+
+            <div class="col-6" id="readCol">
+                <h2>You've read - </h2>
+                <hr>
+                <ul>
+                    {{#each books}} 
+                        {{#if devoured}} 
+                            {{> books/listItem}} 
+                        {{/if}} 
+                    {{/each}}
+                </ul>
+            </div>
 
         </div>
 
     </div>
 
-    <hr> 
-
-    {{!-- Add book form --}}
+    <hr> {{!-- Add book form --}}
     <form>
         <div class="form-group">
-            <label for="bookInput">Add a new book</label>
-            <input class="form-control" id="addBook" placeholder="Enter a book title">
-            <small id="formCaption" class="form-text text-muted">What better could you do?</small>
+            <label id="addBookLabel" for="bookInput">Add a new book</label>
+            <input class="form-control" id="addTitle" placeholder="Enter a book title"> {{!--
+            <small id="formCaption" class="form-text text-muted">What better could you do?</small> --}}
+            <br>
+            <input class="form-control" id="addAuthor" placeholder="Enter an author"> {{!--
+            <small id="formCaption" class="form-text text-muted">Ya know?</small> --}}
+            <br>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="readRadio" id="readRadio" value="option1">
+                <label class="form-check-label" for="readRadio">
+                    I've read this before
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="unreadRadio" id="unreadRadio" value="option2">
+                <label class="form-check-label" for="unreadRadio">
+                    I haven't read this before
+                </label>
+            </div>
             <br>
             <button type="submit" class="btn btn-primary">Do it.</button>
         </div>

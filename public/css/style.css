@@ -1,0 +1,15 @@
+#bookItem {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; 
+    font-size: 20px; 
+}
+
+#titleTag {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; 
+    font-style: italic; 
+    font-size: 20px; 
+}
+
+#addBookLabel {
+    font-size: 20px; 
+}
+
