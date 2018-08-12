@@ -34,10 +34,17 @@ module.exports = (app) => {
     // Route to hit when title has been devoured
     app.put("/api/books/:id", (req, res) => {
         const book = req.body; 
-        const id = req.params.id
+        const id = req.params.id; 
         db.Book.update(
             {devoured: book.devoured}, 
             {where: {id: id}}
-        ).then(result => res.json(result));; 
+        ).then(result => res.json(result));
+    })
+
+    // Delete specific title 
+    app.delete("/api/books/:id", (req, res) => {
+        const id = req.params.id; 
+        db.Book.destroy({where: {id: id}})
+          .then(result => res.json(result)); 
     })
 };

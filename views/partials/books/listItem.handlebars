@@ -1,9 +1,11 @@
 <li>
-	<span id="bookItem"><span id="titleTag">{{title}}</span> by {{author}}</span>
+	<span id="bookItem">
+		<span id="titleTag">{{title}}</span> by {{author}}</span>
 
 	<button class="devour btn btn-sm btn-secondary" data-id="{{id}}" data-readState="{{devoured}}">
 		{{#if devoured}}Again!{{else}}Devour{{/if}}
 	</button>
 
-	{{!-- <button class="deleteBook btn btn-sm btn-secondary" data-id="{{this.id}}">Dust bin</button> --}}
+	<button class="delete btn btn-sm btn-danger" data-id="{{this.id}}">Trash!</button>
 </li>
+

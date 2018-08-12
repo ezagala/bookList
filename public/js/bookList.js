@@ -27,8 +27,6 @@ $(function() {
     $(".addBook").on("click", function(event) {
         event.preventDefault(); 
 
-        console.log("success"); 
-
         const title = $("#addTitle").val().trim(); 
         const author = $("#addAuthor").val().trim();
         let devoured = false; 
@@ -49,7 +47,20 @@ $(function() {
             type: "POST", 
             data: newBook
         }).then( () => {
-            console.log("Bood added: " + newBook.title) 
+            console.log("Book added: " + newBook.title) 
+            location.reload(); 
+        })
+
+    })
+
+    $(".delete").on("click", function(event){
+        event.preventDefault(); 
+        const id = $(this).data("id");
+
+        $.ajax("/api/books/" + id, {
+            type: "DELETE"
+        }).then( () => {
+            console.log("Book id that was deleted: " + id) 
             location.reload(); 
         })
 
